@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -77,7 +78,7 @@ function cssRules_generatorFn (context) {
 			animation: fadein_exceptiontoast ${animationDuration_s}s, fadeout_exceptiontoast ${animationDuration_s}s ${displayDelay_s}s;
 		}`,
 		`@-webkit-keyframes fadein_exceptiontoast {
-			from {bottom: 0; opacity: 0;} 
+			from {bottom: 0; opacity: 0;}
 			to {bottom: 30px; opacity: 1;}
 		}`,
 		`@keyframes fadein_exceptiontoast {
@@ -85,7 +86,7 @@ function cssRules_generatorFn (context) {
 			to {bottom: 30px; opacity: 1;}
 		}`,
 		`@-webkit-keyframes fadeout_exceptiontoast {
-			from {bottom: 30px; opacity: 1;} 
+			from {bottom: 30px; opacity: 1;}
 			to {bottom: 0; opacity: 0;}
 		}`,
 		`@keyframes fadeout_exceptiontoast {
@@ -143,7 +144,7 @@ class ExceptionAlerting {
       return // most likely an error from webflow - can skip erroring these ; TODO: remove this when removing webflow
     }
     if (typeof message !== 'undefined' && message && message !== '') {
-      self.doToastMessage('Unhandled error. Please inform MyMonero Support of this message: ' + message, message)
+      self.doToastMessage('Unhandled error. Please inform Wazniya Support of this message: ' + message, message)
     } else {
       self.doToastMessage('Unrecognized error occured. Please contact Support with steps and browser informations.', undefined)
     }

@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -28,8 +29,8 @@
 //
 'use strict'
 //
-const monero_config = require('../../mymonero_libapp_js/mymonero-core-js/monero_utils/monero_config')
-const JSBigInt = require('../../mymonero_libapp_js/mymonero-core-js/cryptonote_utils/biginteger').BigInteger
+const wazn_config = require('../../wazniya_libapp_js/wazniya-core-js/wazn_utils/wazn_config')
+const JSBigInt = require('../../wazniya_libapp_js/wazniya-core-js/cryptonote_utils/biginteger').BigInteger
 //
 const View = require('../../Views/View.web')
 //
@@ -48,7 +49,7 @@ const ImportTransactionsModalView = require('./ImportTransactionsModalView.web')
 const FundsRequestQRDisplayView = require('../../RequestFunds/Views/FundsRequestQRDisplayView.web')
 //
 const Currencies = require('../../CcyConversionRates/Currencies')
-const monero_amount_format_utils = require('../../mymonero_libapp_js/mymonero-core-js/monero_utils/monero_amount_format_utils')
+const wazn_amount_format_utils = require('../../wazniya_libapp_js/wazniya-core-js/wazn_utils/wazn_amount_format_utils')
 //
 class WalletDetailsView extends View {
   constructor (options, context) {
@@ -177,11 +178,11 @@ class WalletDetailsView extends View {
       )
       const displayCcySymbol = amount_displayStringComponents.ccy_str
       const amt_str = amount_displayStringComponents.amt_str
-      // now check if the ccy is /still/ XMR…
-      if (displayCcySymbol == Currencies.ccySymbolsByCcy.XMR) {
-        // NOTE: checking if ccy is XMR again to catch displayCurrencyAmountDouble_orNull=null fallthrough case from alt display ccy
+      // now check if the ccy is /still/ WAZN…
+      if (displayCcySymbol == Currencies.ccySymbolsByCcy.WAZN) {
+        // NOTE: checking if ccy is WAZN again to catch displayCurrencyAmountDouble_orNull=null fallthrough case from alt display ccy
         const raw_balanceString = wallet.Balance_FormattedString()
-        const coinUnitPlaces = monero_config.coinUnitPlaces
+        const coinUnitPlaces = wazn_config.coinUnitPlaces
         const raw_balanceString__components = raw_balanceString.split('.')
         if (raw_balanceString__components.length == 1) {
           const balance_aspect_integer = raw_balanceString__components[0]
@@ -769,7 +770,7 @@ class WalletDetailsView extends View {
       self.balanceLabelView.SetBalanceWithWallet(wallet)
     }
     // hopefully these will be able to handle small enough values .. maybe switch to BigInt w/o doubles .. but fwiw they are just for display
-    const XMR = Currencies.ccySymbolsByCcy.XMR
+    const WAZN = Currencies.ccySymbolsByCcy.WAZN
     const amountPending_JSBigInt = wallet.AmountPending_JSBigInt()
     const hasPendingAmount = amountPending_JSBigInt.compare(0) > 0
     const amountLocked_JSBigInt = wallet.locked_balance || new JSBigInt(0)
@@ -909,7 +910,7 @@ class WalletDetailsView extends View {
             // div.style.webkitUserSelect = "all" // decided to comment this because it interferes with cell click
             const received_JSBigInt = tx.total_received ? (typeof tx.total_received === 'string' ? new JSBigInt(tx.total_received) : tx.total_received) : new JSBigInt('0')
             const sent_JSBigInt = tx.total_sent ? (typeof tx.total_sent === 'string' ? new JSBigInt(tx.total_sent) : tx.total_sent) : new JSBigInt('0')
-            div.innerHTML = monero_amount_format_utils.formatMoney(received_JSBigInt.subtract(sent_JSBigInt))
+            div.innerHTML = wazn_amount_format_utils.formatMoney(received_JSBigInt.subtract(sent_JSBigInt))
           }
           { // Date
             const div = document.createElement('div')
@@ -1235,7 +1236,7 @@ class WalletDetailsView extends View {
       function (tx, i) {
         const received_JSBigInt = tx.total_received ? (typeof tx.total_received === 'string' ? new JSBigInt(tx.total_received) : tx.total_received) : new JSBigInt('0')
         const sent_JSBigInt = tx.total_sent ? (typeof tx.total_sent === 'string' ? new JSBigInt(tx.total_sent) : tx.total_sent) : new JSBigInt('0')
-        const amountString = monero_amount_format_utils.formatMoney(received_JSBigInt.subtract(sent_JSBigInt))
+        const amountString = wazn_amount_format_utils.formatMoney(received_JSBigInt.subtract(sent_JSBigInt))
         //
         const payment_id = `${tx.payment_id || ''}`
         const status = `${tx.isFailed ? 'REJECTED' : (tx.isConfirmed !== true || tx.isUnlocked !== true ? 'PENDING' : 'CONFIRMED')}`

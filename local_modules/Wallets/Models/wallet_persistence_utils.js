@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -28,7 +29,7 @@
 //
 //
 const persistable_object_utils = require('../../DocumentPersister/persistable_object_utils')
-const JSBigInt = require('../../mymonero_libapp_js/mymonero-core-js/cryptonote_utils/biginteger').BigInteger
+const JSBigInt = require('../../wazniya_libapp_js/wazniya-core-js/cryptonote_utils/biginteger').BigInteger
 //
 const CollectionName = 'Wallets'
 exports.CollectionName = CollectionName

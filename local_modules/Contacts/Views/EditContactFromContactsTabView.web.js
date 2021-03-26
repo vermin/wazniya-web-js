@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -32,7 +33,7 @@ const ContactFormView = require('../../Contacts/Views/ContactFormView.web')
 const commonComponents_tables = require('../../MMAppUICommonComponents/tables.web')
 const commonComponents_activityIndicators = require('../../MMAppUICommonComponents/activityIndicators.web')
 //
-const monero_paymentID_utils = require('../../mymonero_libapp_js/mymonero-core-js/monero_utils/monero_paymentID_utils')
+const wazn_paymentID_utils = require('../../wazniya_libapp_js/wazniya-core-js/wazn_utils/wazn_paymentID_utils')
 //
 class EditContactFromContactsTabView extends ContactFormView {
   setup () {
@@ -169,7 +170,7 @@ class EditContactFromContactsTabView extends ContactFormView {
       return
     }
     if (typeof paymentID !== 'undefined' && paymentID) {
-      if (self.context.monero_utils.is_subaddress(address, self.context.nettype)) { // paymentID disallowed with subaddress
+      if (self.context.wazn_utils.is_subaddress(address, self.context.nettype)) { // paymentID disallowed with subaddress
         self.validationMessageLayer.SetValidationError('Payment IDs cannot be used with subaddresses.')
         return
       }
@@ -188,13 +189,13 @@ class EditContactFromContactsTabView extends ContactFormView {
     self.cancelAny_requestHandle_for_oaResolution() // jic
     //
     const openAliasResolver = self.context.openAliasResolver
-    if (openAliasResolver.DoesStringContainPeriodChar_excludingAsXMRAddress_qualifyingAsPossibleOAAddress(address) === false) {
+    if (openAliasResolver.DoesStringContainPeriodChar_excludingAsWAZNAddress_qualifyingAsPossibleOAAddress(address) === false) {
       let address__decode_result
       try {
-        address__decode_result = self.context.monero_utils.decode_address(address, self.context.nettype)
+        address__decode_result = self.context.wazn_utils.decode_address(address, self.context.nettype)
       } catch (e) {
         __reEnableForm()
-        self.validationMessageLayer.SetValidationError('Please enter a valid Monero address') // not using the error here cause it can be pretty unhelpful to the lay user
+        self.validationMessageLayer.SetValidationError('Please enter a valid Wazn address') // not using the error here cause it can be pretty unhelpful to the lay user
         return
       }
       const integratedAddress_paymentId = address__decode_result.intPaymentId
@@ -203,12 +204,12 @@ class EditContactFromContactsTabView extends ContactFormView {
         paymentID = integratedAddress_paymentId // use this one instead
         self.paymentIDInputLayer.value = paymentID
       } else { // not an integrated addr - normal wallet addr or subaddress
-        if (self.context.monero_utils.is_subaddress(address, self.context.nettype)) { // paymentID disallowed with subaddress
+        if (self.context.wazn_utils.is_subaddress(address, self.context.nettype)) { // paymentID disallowed with subaddress
           paymentID = undefined
           self.paymentIDInputLayer.value = ''
         } else { // normal wallet address
           if (paymentID === '' || typeof paymentID === 'undefined') { // if no existing payment ID
-            paymentID = self.context.monero_utils.new_payment_id() // generate new one for them
+            paymentID = self.context.wazn_utils.new_payment_id() // generate new one for them
             self.paymentIDInputLayer.value = paymentID
           } else { // just use/allow entered paymentID
           }
@@ -224,7 +225,7 @@ class EditContactFromContactsTabView extends ContactFormView {
         function (
           err,
           addressWhichWasPassedIn,
-          moneroReady_address,
+          waznReady_address,
           returned__payment_id, // may be undefined
           tx_description,
           openAlias_domain,
@@ -255,18 +256,18 @@ class EditContactFromContactsTabView extends ContactFormView {
           // not going to re-enable the form yet
           //
           const payment_id__toSave = returned__payment_id || ''
-          const cached_OAResolved_XMR_address = moneroReady_address
+          const cached_OAResolved_WAZN_address = waznReady_address
           _proceedTo_saveContact_paymentID(
             payment_id__toSave, // aka use no/zero/emptystr payment id rather than null as null will create a new
-            cached_OAResolved_XMR_address // it's ok if this is undefined
+            cached_OAResolved_WAZN_address // it's ok if this is undefined
           )
         }
       )
     }
     //
-    function _proceedTo_saveContact_paymentID (paymentID__toSave, cached_OAResolved_XMR_address__orUndefined) {
+    function _proceedTo_saveContact_paymentID (paymentID__toSave, cached_OAResolved_WAZN_address__orUndefined) {
       const paymentID_exists = paymentID__toSave && typeof paymentID__toSave !== 'undefined'
-      const paymentID_existsAndIsNotValid = paymentID_exists && monero_paymentID_utils.IsValidPaymentIDOrNoPaymentID(paymentID__toSave) === false
+      const paymentID_existsAndIsNotValid = paymentID_exists && wazn_paymentID_utils.IsValidPaymentIDOrNoPaymentID(paymentID__toSave) === false
       if (paymentID_existsAndIsNotValid === true) {
         __reEnableForm()
         self.validationMessageLayer.SetValidationError('Please enter a valid payment ID.')
@@ -277,7 +278,7 @@ class EditContactFromContactsTabView extends ContactFormView {
           fullname: fullname,
           emoji: emoji,
           address: address,
-          cached_OAResolved_XMR_address: cached_OAResolved_XMR_address__orUndefined,
+          cached_OAResolved_WAZN_address: cached_OAResolved_WAZN_address__orUndefined,
           payment_id: paymentID__toSave
         },
         function (err) {

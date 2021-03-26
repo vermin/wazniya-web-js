@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -29,9 +30,9 @@
 'use strict'
 //
 const globalObject = global
-const globalPromiseKey = 'MyMoneroLibAppBridge_Singleton.electron'
+const globalPromiseKey = 'WazniyaLibAppBridge_Singleton.electron'
 if (typeof globalObject[globalPromiseKey] === 'undefined' || !globalObject[globalPromiseKey]) {
-  globalObject[globalPromiseKey] = require('../mymonero_libapp_js/libapp_js/MyMoneroLibAppBridge')({ asmjs: false })
+  globalObject[globalPromiseKey] = require('../wazniya_libapp_js/libapp_js/WazniyaLibAppBridge')({ asmjs: false })
 }
 //
 module.exports = globalObject[globalPromiseKey]

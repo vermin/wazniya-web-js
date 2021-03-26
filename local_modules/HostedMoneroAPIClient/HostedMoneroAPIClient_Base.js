@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -30,13 +31,13 @@
 //
 const async = require('async')
 //
-const JSBigInt = require('../mymonero_libapp_js/mymonero-core-js/cryptonote_utils/biginteger').BigInteger // important: grab defined export
-const monero_config = require('../mymonero_libapp_js/mymonero-core-js/monero_utils/monero_config')
-const net_service_utils = require('../mymonero_libapp_js/mymonero-core-js/hostAPI/net_service_utils')
+const JSBigInt = require('../wazniya_libapp_js/wazniya-core-js/cryptonote_utils/biginteger').BigInteger // important: grab defined export
+const wazn_config = require('../wazniya_libapp_js/wazniya-core-js/wazn_utils/wazn_config')
+const net_service_utils = require('../wazniya_libapp_js/wazniya-core-js/hostAPI/net_service_utils')
 //
-const config__MyMonero = require('./config__MyMonero')
+const config__Wazniya = require('./config__Wazniya')
 //
-class HostedMoneroAPIClient_Base {
+class HostedWaznAPIClient_Base {
   //
   // Lifecycle - Initialization
   constructor (options, context) {
@@ -69,7 +70,7 @@ class HostedMoneroAPIClient_Base {
   //
   // Runtime - Accessors - Private - Requests
   _new_apiAddress_authority () { // overridable
-    return config__MyMonero.API__authority
+    return config__Wazniya.API__authority
   }
 
   //
@@ -339,13 +340,13 @@ class HostedMoneroAPIClient_Base {
   SubmitRawTx (req_params, fn) {
     const self = this
     // just a debug feature:
-    if (self.context.HostedMoneroAPIClient_DEBUGONLY_mockSendTransactionSuccess === true) {
+    if (self.context.HostedWaznAPIClient_DEBUGONLY_mockSendTransactionSuccess === true) {
       if (self.context.isDebug === true) {
         console.warn('⚠️  WARNING: Mocking that SubmitSerializedSignedTransaction returned a success response w/o having hit the server.')
         fn(null, {})
         return
       } else {
-        throw `[${self.constructor.name}/SubmitSerializedSignedTransaction]: context.HostedMoneroAPIClient_DEBUGONLY_mockSendTransactionSuccess was true despite isDebug not being true. Set back to false for production build.`
+        throw `[${self.constructor.name}/SubmitSerializedSignedTransaction]: context.HostedWaznAPIClient_DEBUGONLY_mockSendTransactionSuccess was true despite isDebug not being true. Set back to false for production build.`
       }
     }
     net_service_utils.AddUserAgentParamters(
@@ -365,4 +366,4 @@ class HostedMoneroAPIClient_Base {
     return requestHandle
   }
 }
-module.exports = HostedMoneroAPIClient_Base
+module.exports = HostedWaznAPIClient_Base

@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -33,7 +34,7 @@ const commonComponents_navigationBarButtons = require('../../MMAppUICommonCompon
 const commonComponents_walletMnemonicBox = require('../../MMAppUICommonComponents/walletMnemonicBox.web')
 const commonComponents_hoverableCells = require('../../MMAppUICommonComponents/hoverableCells.web')
 //
-const mnemonic_languages = require('../../mymonero_libapp_js/mymonero-core-js/cryptonote_utils/mnemonic_languages')
+const mnemonic_languages = require('../../wazniya_libapp_js/wazniya-core-js/cryptonote_utils/mnemonic_languages')
 //
 const BaseView_AWalletWizardScreen = require('./BaseView_AWalletWizardScreen.web')
 //
@@ -79,7 +80,7 @@ class CreateWallet_InformOfMnemonic_View extends BaseView_AWalletWizardScreen {
       layer.style.webkitFontSmoothing = 'subpixel-antialiased'
       layer.style.wordBreak = 'break-word'
       layer.style.color = '#F5E67E'
-      const text = 'NOTE: This is the only way to access your wallet if you switch devices, use another Monero wallet app, or lose your&nbsp;data.'
+      const text = 'NOTE: This is the only way to access your wallet if you switch devices, use another Wazn wallet app, or lose your&nbsp;data.'
       layer.innerHTML = text
       self.layer.appendChild(layer)
     }

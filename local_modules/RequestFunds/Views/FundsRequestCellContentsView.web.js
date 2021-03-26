@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -289,7 +290,7 @@ class FundsRequestCellContentsView extends View {
     }
     const colorHexString = is_displaying_local_wallet ? wallet_ifRecordForQRDisplay.swatch : fundsRequest.to_walletHexColorString
     self.walletIconLayer.ConfigureWithHexColorString(colorHexString || '')
-    const ccy = fundsRequest.amountCcySymbol || 'XMR'
+    const ccy = fundsRequest.amountCcySymbol || 'WAZN'
     if (is_displaying_local_wallet) {
       self.amountLayer.innerHTML = 'To "' + wallet_ifRecordForQRDisplay.walletLabel + '"'// TODO localize
     } else {

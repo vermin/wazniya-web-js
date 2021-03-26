@@ -5,12 +5,12 @@
         <div class="form_field" id="currency-table">
             <table class="full-width">
                 <tr>
-                    <td>   
-                        <div class="field_title form-field-title">XMR to send
+                    <td>
+                        <div class="field_title form-field-title">WAZN to send
                             <div style="position: relative; left: 0px; top: 0px; padding: 2px 0 0 0;">
                                 <span class="field_title form-field-title label-spacing" style="margin-top: 0px;">AMOUNT</span>
-                                <input id="XMRcurrencyInput" class="textInput currencyInput" type="text" placeholder="00.00" value="">
-                                <select id="currencySelect"><option value="XMR" style="text-align: center;">XMR</option></select>    
+                                <input id="WAZNcurrencyInput" class="textInput currencyInput" type="text" placeholder="00.00" value="">
+                                <select id="currencySelect"><option value="WAZN" style="text-align: center;">WAZN</option></select>
                             </div>
                         </div>
                     </td>
@@ -19,7 +19,7 @@
                             <div class="" style="position: relative; left: 0px; top: 0px; padding: 2px 0 0 0">
                                 <span class="field_title form-field-title label-spacing" style="margin-top: 0px;">AMOUNT</span>
                                 <input id="BTCcurrencyInput" class="textInput currencyInput" type="text" placeholder="00.00" value="">
-                                <select id="currencySelect"><option value="BTC" style="text-align: center;">BTC</option></select>    
+                                <select id="currencySelect"><option value="BTC" style="text-align: center;">BTC</option></select>
                             </div>
                         </div>
                     </td>
@@ -30,7 +30,7 @@
         <div class="form_field" id="tx-fee">
                 <span class="field_title form-field-title" style="margin-top: 8px; color: rgb(158, 156, 158); display: inline-block;">Loading ...</span>
             </div>
-            
+
 
             <div class="form_field" id="btc-address">
                 <span class="field_title form-field-title" style="margin-top: 17px;">DESTINATION BITCOIN ADDRESS
@@ -44,7 +44,7 @@
             <div id="server-messages"></div>
 
         </div>
-                
+
         </div>
         <div id="order-status">
 
@@ -54,15 +54,15 @@
         <div class="field_title form-field-title">
             <table>
                 <tr>
-                    <td colspan="2" style="word-wrap: normal; word-break: normal;">Please note that MyMonero cannot provide support for any exchanges. For all issues, please contact XMR.to with your UUID, as they will be able to assist.</td>
+                    <td colspan="2" style="word-wrap: normal; word-break: normal;">Please note that Wazniya cannot provide support for any exchanges. For all issues, please contact WAZN.to with your UUID, as they will be able to assist.</td>
                 </tr>
                 <tr>
                     <td>
                         <div class="field_title form-field-title uppercase">
                             <div style="position: relative; left: 0px; top: 0px; padding: 2px 0 0 0;">
-                                <span class="field_title form-field-title label-spacing" style="margin-top: 0px;">XMR.to UUID</span>
+                                <span class="field_title form-field-title label-spacing" style="margin-top: 0px;">WAZN.to UUID</span>
                                 <div id="provider_order_id" class="textInput currencyOutput" type="text" placeholder="0.00"></div>
-                                <div class="currencySelect"><option value="XMR" style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;</option></select> 
+                                <div class="currencySelect"><option value="WAZN" style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;</option></select>
                             </div>
                         </div>
                     </td>
@@ -78,11 +78,11 @@
                 </tr>
                 <tr>
                     <td>
-                        <div class="field_title form-field-title">Remaining XMR payable
+                        <div class="field_title form-field-title">Remaining WAZN payable
                             <div style="position: relative; left: 0px; top: 0px; padding: 2px 0 0 0;">
                                 <span class="field_title form-field-title label-spacing" style="margin-top: 0px;">AMOUNT</span>
                                 <div id="in_amount_remaining" class="textInput currencyOutput" type="text" placeholder="0.00">Loading</div>
-                                <div class="currencySelect"><option value="XMR" style="text-align: center;">XMR</option>    
+                                <div class="currencySelect"><option value="WAZN" style="text-align: center;">WAZN</option>
                             </div>
                         </div>
                     </td>
@@ -91,7 +91,7 @@
                             <div class="" style="position: relative; left: 0px; top: 0px; padding: 2px 0 0 0">
                                 <span class="field_title form-field-title label-spacing" style="margin-top: 0px;">AMOUNT</span>
                                 <div id="out_amount" class="textInput currencyOutput" type="text">Loading</div>
-                                <div class="currencySelect"><option value="BTC" style="text-align: center;">BTC</option>    
+                                <div class="currencySelect"><option value="BTC" style="text-align: center;">BTC</option>
                             </div>
                         </div>
                     </td>
@@ -102,7 +102,7 @@
                             <div class="" style="position: relative; left: 0px; top: 0px; padding: 2px 0 0 0">
                                 <span class="field_title form-field-title label-spacing" style="margin-top: 0px;">Order Status</span>
                                 <div class="order-status textInput currencyOutput" id="status"></div>
-                                <div class="currencySelect"><option value="XMR" style="text-align: center;">&nbsp;&nbsp;&nbsp;</option>
+                                <div class="currencySelect"><option value="WAZN" style="text-align: center;">&nbsp;&nbsp;&nbsp;</option>
                                 </div>
                             </div>
                         </div>
@@ -123,7 +123,7 @@
                     </tr>
                 </table>
         </div>
-        <div id="monerod-updates" class="validationWindow">
+        <div id="waznd-updates" class="validationWindow">
 
         </div>
             <table class="hidden">
@@ -159,9 +159,9 @@
                 </tr>
                 <tr>
                     <td>uuid</td>
-                    <td id="uuid"> "xmrto-NCXzGE"</td>
+                    <td id="uuid"> "waznto-NCXzGE"</td>
                 </tr>
-            </table>            
+            </table>
         </div>
     </div>
 </div>

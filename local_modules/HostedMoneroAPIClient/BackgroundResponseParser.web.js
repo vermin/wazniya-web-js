@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -29,8 +30,8 @@
 'use strict'
 //
 // In the future this could implement web workers
-const response_parser_utils = require('../mymonero_libapp_js/mymonero-core-js/hostAPI/response_parser_utils')
-const monero_keyImage_cache_utils = require('../mymonero_libapp_js/mymonero-core-js/monero_utils/monero_keyImage_cache_utils')
+const response_parser_utils = require('../wazniya_libapp_js/wazniya-core-js/hostAPI/response_parser_utils')
+const wazn_keyImage_cache_utils = require('../wazniya_libapp_js/wazniya-core-js/wazn_utils/wazn_keyImage_cache_utils')
 //
 class BackgroundResponseParser {
   constructor (options, context) {
@@ -93,7 +94,7 @@ class BackgroundResponseParser {
     address,
     fn // ((err) -> Void)?
   ) {
-    monero_keyImage_cache_utils.DeleteManagedKeyImagesForWalletWith(address)
+    wazn_keyImage_cache_utils.DeleteManagedKeyImagesForWalletWith(address)
     if (fn) {
       setImmediate(fn)
     }

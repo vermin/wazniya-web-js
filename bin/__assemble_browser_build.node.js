@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -41,22 +42,22 @@ const doNotCopyOrEnterFilepathsMatching =
   /^\.eslint/,
   /\.electron\.(.*)\.?(js|html|css)$/, // e.g. electron.js, electron.renderer.js, electron.child.js
   /^electron_/,
-  /mymonero-core-js\/build/, // obviously do not want anything within this
-  /mymonero-core-js\/node_modules/, // all of these are dev dependencies, so we don't want them
-  /mymonero_libapp_js\/build/, // obviously do not want anything within this
-  /mymonero_libapp_js\/node_modules/, // all of these are dev dependencies, so we don't want them
-  /mymonero_libapp_js\/tests/,
-  /mymonero_libapp_js\/src/,
-  /mymonero-core-js\/index\.js/,
-  /MyMoneroCoreCpp_ASMJS\.js/,
-  /MyMoneroCoreCpp_ASMJS\.asm\.js/,
-  /MyMoneroCoreCpp_WASM\.js/,
-  /MyMoneroCoreCpp_WASM\.wasm/,
-  /MyMoneroCoreBridge\.js/,
-  /MyMoneroCoreBridgeClass\.js/,
-  /mymonero-core-js\/tests/,
-  /mymonero-core-js\/wallaby/,
-  /mymonero-core-js\/src/,
+  /wazniya-core-js\/build/, // obviously do not want anything within this
+  /wazniya-core-js\/node_modules/, // all of these are dev dependencies, so we don't want them
+  /wazniya_libapp_js\/build/, // obviously do not want anything within this
+  /wazniya_libapp_js\/node_modules/, // all of these are dev dependencies, so we don't want them
+  /wazniya_libapp_js\/tests/,
+  /wazniya_libapp_js\/src/,
+  /wazniya-core-js\/index\.js/,
+  /WazniyaCoreCpp_ASMJS\.js/,
+  /WazniyaCoreCpp_ASMJS\.asm\.js/,
+  /WazniyaCoreCpp_WASM\.js/,
+  /WazniyaCoreCpp_WASM\.wasm/,
+  /WazniyaCoreBridge\.js/,
+  /WazniyaCoreBridgeClass\.js/,
+  /wazniya-core-js\/tests/,
+  /wazniya-core-js\/wallaby/,
+  /wazniya-core-js\/src/,
   /node_modules\/electron/, // no reason we'd want this
   /LICENSE\.txt/,
   /README\.md/,

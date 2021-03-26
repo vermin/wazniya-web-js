@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -28,13 +29,13 @@
 
 'use strict'
 //
-const monero_config = require('../mymonero_libapp_js/mymonero-core-js/monero_utils/monero_config')
-const monero_amount_format_utils = require('../mymonero_libapp_js/mymonero-core-js/monero_utils/monero_amount_format_utils')
-const JSBigInt = require('../mymonero_libapp_js/mymonero-core-js/cryptonote_utils/biginteger').BigInteger
+const wazn_config = require('../wazniya_libapp_js/wazniya-core-js/wazn_utils/wazn_config')
+const wazn_amount_format_utils = require('../wazniya_libapp_js/wazniya-core-js/wazn_utils/wazn_amount_format_utils')
+const JSBigInt = require('../wazniya_libapp_js/wazniya-core-js/cryptonote_utils/biginteger').BigInteger
 //
 const ccySymbolsByCcy = exports.ccySymbolsByCcy =
 {
-  XMR: 'XMR', // included for completeness / convenience / API
+  WAZN: 'WAZN', // included for completeness / convenience / API
   USD: 'USD',
   AUD: 'AUD',
   BRL: 'BRL',
@@ -58,7 +59,7 @@ const ccySymbolsByCcy = exports.ccySymbolsByCcy =
 }
 const allOrderedCurrencySymbols = exports.allOrderedCurrencySymbols =
 [
-  ccySymbolsByCcy.XMR, // included for completeness / convenience / API
+  ccySymbolsByCcy.WAZN, // included for completeness / convenience / API
   ccySymbolsByCcy.USD,
   ccySymbolsByCcy.AUD,
   ccySymbolsByCcy.BRL,
@@ -81,11 +82,11 @@ const allOrderedCurrencySymbols = exports.allOrderedCurrencySymbols =
   ccySymbolsByCcy.ZAR
 ]
 const hasAtomicUnits = exports.hasAtomicUnits = function (ccySymbol) {
-  return (ccySymbol == ccySymbolsByCcy.XMR)
+  return (ccySymbol == ccySymbolsByCcy.WAZN)
 }
 const unitsForDisplay = exports.unitsForDisplay = function (ccySymbol) {
-  if (ccySymbol == ccySymbolsByCcy.XMR) {
-    return monero_config.coinUnitPlaces
+  if (ccySymbol == ccySymbolsByCcy.WAZN) {
+    return wazn_config.coinUnitPlaces
   }
   return 2
 }
@@ -94,8 +95,8 @@ const nonAtomicCurrency_formattedString = exports.nonAtomicCurrency_formattedStr
   ccySymbol
 ) { // -> String
   // is nonAtomic-unit'd currency a good enough way to categorize these?
-  if (ccySymbol == ccySymbolsByCcy.XMR) {
-    throw 'nonAtomicCurrency_formattedString not to be called with ccySymbol=.XMR'
+  if (ccySymbol == ccySymbolsByCcy.WAZN) {
+    throw 'nonAtomicCurrency_formattedString not to be called with ccySymbol=.WAZN'
   }
   if (final_amountDouble == 0) {
     return '0' // not 0.0
@@ -134,7 +135,7 @@ const nonAtomicCurrency_formattedString = exports.nonAtomicCurrency_formattedStr
 function roundTo (num, digits) {
   return +(Math.round(num + 'e+' + digits) + 'e-' + digits)
 }
-exports.submittableMoneroAmountDouble_orNull = function (
+exports.submittableWaznAmountDouble_orNull = function (
   CcyConversionRates_Controller_shared,
   selectedCurrencySymbol,
   submittableAmountRawNumber_orNull // passing null causes immediate return of null
@@ -144,37 +145,37 @@ exports.submittableMoneroAmountDouble_orNull = function (
     return null
   }
   const submittableAmountRawNumber = submittableAmountRawNumber_orNull
-  if (selectedCurrencySymbol == ccySymbolsByCcy.XMR) {
+  if (selectedCurrencySymbol == ccySymbolsByCcy.WAZN) {
     return submittableAmountRawNumber // identity rate - NOTE: this is also the RAW non-truncated amount
   }
-  const xmrAmountDouble = rounded_ccyConversionRateCalculated_moneroAmountNumber(
+  const waznAmountDouble = rounded_ccyConversionRateCalculated_waznAmountNumber(
     CcyConversionRates_Controller_shared,
     submittableAmountRawNumber,
     selectedCurrencySymbol
   )
-  return xmrAmountDouble
+  return waznAmountDouble
 }
-const rounded_ccyConversionRateCalculated_moneroAmountNumber =
-	exports.rounded_ccyConversionRateCalculated_moneroAmountNumber =
+const rounded_ccyConversionRateCalculated_waznAmountNumber =
+	exports.rounded_ccyConversionRateCalculated_waznAmountNumber =
 	function (
 	    CcyConversionRates_Controller_shared,
 	    userInputAmountJSNumber,
 	    selectedCurrencySymbol
 	  ) { // -> Double? // may return nil if ccyConversion rate unavailable - consumers will try again on 'didUpdateAvailabilityOfRates'
-	    const xmrToCurrencyRate = CcyConversionRates_Controller_shared.rateFromXMR_orNullIfNotReady(
+	    const waznToCurrencyRate = CcyConversionRates_Controller_shared.rateFromWAZN_orNullIfNotReady(
 	      selectedCurrencySymbol
 	    )
-	    if (xmrToCurrencyRate == null) {
+	    if (waznToCurrencyRate == null) {
 	      return null // ccyConversion rate unavailable - consumers will try again on 'didUpdateAvailabilityOfRates'
 	    }
 	    // conversion:
-	    // currencyAmt = xmrAmt * xmrToCurrencyRate;
-	    // xmrAmt = currencyAmt / xmrToCurrencyRate.
+	    // currencyAmt = waznAmt * waznToCurrencyRate;
+	    // waznAmt = currencyAmt / waznToCurrencyRate.
 	    // I figure it's better to apply the rounding here rather than only at the display level so that what is actually sent corresponds to what the user saw, even if greater ccyConversion precision /could/ be accomplished..
-	    const raw_ccyConversionRateApplied_amount = userInputAmountJSNumber * (1 / xmrToCurrencyRate)
+	    const raw_ccyConversionRateApplied_amount = userInputAmountJSNumber * (1 / waznToCurrencyRate)
 	    const truncated_amount = roundTo(raw_ccyConversionRateApplied_amount, 4) // must be truncated for display purposes
 	    if (isNaN(truncated_amount)) {
-	      throw 'truncated_amount in rounded_ccyConversionRateCalculated_moneroAmountNumber is NaN'
+	      throw 'truncated_amount in rounded_ccyConversionRateCalculated_waznAmountNumber is NaN'
 	    }
 	    //
 	    return truncated_amount
@@ -182,22 +183,22 @@ const rounded_ccyConversionRateCalculated_moneroAmountNumber =
 const displayUnitsRounded_amountInCurrency = exports.displayUnitsRounded_amountInCurrency = function ( // Note: __DISPLAY__ units
   CcyConversionRates_Controller_shared,
   ccySymbol,
-  moneroAmountNumber // NOTE: 'Double' JS Number, not JS BigInt
+  waznAmountNumber // NOTE: 'Double' JS Number, not JS BigInt
 ) { // -> Double?
-  if (typeof moneroAmountNumber !== 'number') {
-    throw 'unexpected typeof moneroAmountNumber=' + (typeof moneroAmountNumber)
+  if (typeof waznAmountNumber !== 'number') {
+    throw 'unexpected typeof waznAmountNumber=' + (typeof waznAmountNumber)
   }
-  if (ccySymbol == ccySymbolsByCcy.XMR) {
-    return moneroAmountNumber // no conversion necessary
+  if (ccySymbol == ccySymbolsByCcy.WAZN) {
+    return waznAmountNumber // no conversion necessary
   }
-  const xmrToCurrencyRate = CcyConversionRates_Controller_shared.rateFromXMR_orNullIfNotReady(
+  const waznToCurrencyRate = CcyConversionRates_Controller_shared.rateFromWAZN_orNullIfNotReady(
     ccySymbol // toCurrency
   )
-  if (xmrToCurrencyRate == null) {
+  if (waznToCurrencyRate == null) {
     return null // ccyConversion rate unavailable - consumers will try again
   }
   const currency_unitsForDisplay = unitsForDisplay(ccySymbol)
-  const raw_ccyConversionRateApplied_amountNumber = moneroAmountNumber * xmrToCurrencyRate
+  const raw_ccyConversionRateApplied_amountNumber = waznAmountNumber * waznToCurrencyRate
   const truncated_amount = roundTo(raw_ccyConversionRateApplied_amountNumber, currency_unitsForDisplay) // must be truncated for display purposes
   //
   return truncated_amount
@@ -205,19 +206,19 @@ const displayUnitsRounded_amountInCurrency = exports.displayUnitsRounded_amountI
 //
 exports.displayStringComponentsFrom = function (
   CcyConversionRates_Controller_shared,
-  xmr_amount_JSBigInt,
+  wazn_amount_JSBigInt,
   displayCcySymbol
 ) {
-  const XMR = ccySymbolsByCcy.XMR
-  const xmr_amount_str = monero_amount_format_utils.formatMoney(xmr_amount_JSBigInt)
-  if (displayCcySymbol != XMR) {
+  const WAZN = ccySymbolsByCcy.WAZN
+  const wazn_amount_str = wazn_amount_format_utils.formatMoney(wazn_amount_JSBigInt)
+  if (displayCcySymbol != WAZN) {
     // TODO: using doubles here is not very good, and must be replaced with JSBigInts to support small amounts
-    const xmr_amount_double = parseFloat(xmr_amount_str)
+    const wazn_amount_double = parseFloat(wazn_amount_str)
     //
     const displayCurrencyAmountDouble_orNull = displayUnitsRounded_amountInCurrency(
       CcyConversionRates_Controller_shared,
       displayCcySymbol,
-      xmr_amount_double
+      wazn_amount_double
     )
     if (displayCurrencyAmountDouble_orNull != null) { // rate is ready
       const displayCurrencyAmountDouble = displayCurrencyAmountDouble_orNull
@@ -230,11 +231,11 @@ exports.displayStringComponentsFrom = function (
         ccy_str: displayCcySymbol
       }
     } else {
-      // rate is not ready, so wait for it by falling through to display XMR:
+      // rate is not ready, so wait for it by falling through to display WAZN:
     }
   }
   return {
-    amt_str: xmr_amount_str,
-    ccy_str: XMR
+    amt_str: wazn_amount_str,
+    ccy_str: WAZN
   } // special case
 }

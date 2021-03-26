@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -39,7 +40,7 @@ class ModalStandaloneAboutView extends RootView {
   //
   // Runtime - Accessors - Navigation
   Navigation_Title () {
-    return 'About MyMonero'
+    return 'About Wazniya'
   }
 
   Navigation_New_LeftBarButtonView () {

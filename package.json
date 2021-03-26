@@ -1,10 +1,10 @@
 {
-  "name": "MyMonero",
-  "author": "MyMonero",
-  "description": "The simplest way to use Monero",
-  "version": "1.1.19",
+  "name": "Wazniya",
+  "author": "Wazniya",
+  "description": "The simplest way to use Wazn",
+  "version": "0.9.9",
   "license": "SEE LICENSE IN LICENSE.txt",
-  "repository": "https://github.com/mymonero/mymonero-web-js",
+  "repository": "https://github.com/wazniya/wazniya-web-js",
   "scripts": {
     "start": "bin/start_dev_browser",
     "postinstall": "bin/update_submodules",
@@ -19,7 +19,7 @@
     "fastclick": "1.0.6",
     "html5-fs": "0.1.1",
     "jsqr": "1.1.1",
-    "mymonero-exchange": "^0.1.5",
+    "wazniya-exchange": "^0.1.5",
     "qrcode": "^1.4.4",
     "uuid": "3.3.2",
     "velocity-animate": "1.5.2",
@@ -39,7 +39,7 @@
   },
   "standard": {
     "ignore": [
-      "local_modules/mymonero_libapp_js"
+      "local_modules/wazniya_libapp_js"
     ]
   }
 }

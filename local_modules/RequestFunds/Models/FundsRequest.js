@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -33,7 +34,7 @@ const EventEmitter = require('events')
 const persistable_object_utils = require('../../DocumentPersister/persistable_object_utils')
 const fundsRequest_persistence_utils = require('./fundsRequest_persistence_utils')
 //
-const monero_requestURI_utils = require('../../MoneroUtils/monero_requestURI_utils')
+const wazn_requestURI_utils = require('../../WaznUtils/wazn_requestURI_utils')
 const QRCode = require('qrcode')
 //
 class FundsRequest extends EventEmitter {
@@ -165,7 +166,7 @@ class FundsRequest extends EventEmitter {
         console.error(errStr)
         self.__setup_didFailToBoot(err)
       }
-      // we *could* check if fullname and possibly XMR addr are empty/undef here but not much need/reason
+      // we *could* check if fullname and possibly WAZN addr are empty/undef here but not much need/reason
       // and might lead to awkward UX
       //
       // all done
@@ -214,14 +215,14 @@ class FundsRequest extends EventEmitter {
   _assumingBootedOrEquivalent__Lazy_URI__addressAsFirstPathComponent () {
     const self = this
     if (typeof self.uri_addressAsFirstPathComponent === 'undefined' || !self.uri_addressAsFirstPathComponent) {
-      self.uri_addressAsFirstPathComponent = monero_requestURI_utils.New_RequestFunds_URI({
+      self.uri_addressAsFirstPathComponent = wazn_requestURI_utils.New_RequestFunds_URI({
         address: self.to_address,
         payment_id: self.payment_id,
         amount: self.amount,
         amountCcySymbol: self.amountCcySymbol,
         description: self.description,
         message: self.message,
-        uriType: monero_requestURI_utils.URITypes.addressAsFirstPathComponent
+        uriType: wazn_requestURI_utils.URITypes.addressAsFirstPathComponent
       })
     }
     return self.uri_addressAsFirstPathComponent
@@ -239,14 +240,14 @@ class FundsRequest extends EventEmitter {
   _assumingBootedOrEquivalent__Lazy_URI__addressAsAuthority () {
     const self = this
     if (typeof self.uri_addressAsAuthority === 'undefined' || !self.uri_addressAsAuthority) {
-      self.uri_addressAsAuthority = monero_requestURI_utils.New_RequestFunds_URI({
+      self.uri_addressAsAuthority = wazn_requestURI_utils.New_RequestFunds_URI({
         address: self.to_address,
         payment_id: self.payment_id,
         amount: self.amount,
         amountCcySymbol: self.amountCcySymbol,
         description: self.description,
         message: self.message,
-        uriType: monero_requestURI_utils.URITypes.addressAsAuthority
+        uriType: wazn_requestURI_utils.URITypes.addressAsAuthority
       })
     }
     return self.uri_addressAsAuthority

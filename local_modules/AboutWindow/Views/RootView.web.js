@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -108,7 +109,7 @@ class RootView extends View {
       layer.style.webkitFontSmoothing = 'subpixel-antialiased'
       layer.style.cursor = 'pointer'
       layer.innerHTML = 'View on GitHub'
-      layer.href = 'https://www.github.com/mymonero/mymonero-app-js/releases/latest'
+      layer.href = 'https://www.github.com/wazniya/wazniya-app-js/releases/latest'
       layer.addEventListener('mouseenter', function (e) {
         layer.style.textDecoration = 'underline'
       })

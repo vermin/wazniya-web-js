@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -110,16 +111,16 @@ class FundsRequestQRDisplayView extends View {
     {
       const payment_id = self.initializing__fundsRequest.payment_id
       const amount = self.initializing__fundsRequest.amount
-      const amountCcySymbol = self.initializing__fundsRequest.amountCcySymbol || Currencies.ccySymbolsByCcy.XMR
+      const amountCcySymbol = self.initializing__fundsRequest.amountCcySymbol || Currencies.ccySymbolsByCcy.WAZN
       const to_address = self.initializing__fundsRequest.to_address
       innerHTML = 'Scan this code to send '
       if (amount) {
         innerHTML += amount + ' ' + amountCcySymbol
-        if (amountCcySymbol != Currencies.ccySymbolsByCcy.XMR) {
-          innerHTML += ' in Monero'
+        if (amountCcySymbol != Currencies.ccySymbolsByCcy.WAZN) {
+          innerHTML += ' in Wazn'
         }
       } else {
-        innerHTML += 'Monero'
+        innerHTML += 'Wazn'
       }
       if (payment_id != null && payment_id != '' && typeof payment_id !== 'undefined') {
         innerHTML += ' with payment ID ' + payment_id
@@ -158,8 +159,8 @@ class FundsRequestQRDisplayView extends View {
           }
           self.context.filesystemUI.PresentDialogToSaveBase64ImageStringAsImageFile(
             imgDataURIString,
-            'Save Monero Request',
-            'Monero request',
+            'Save Wazn Request',
+            'Wazn request',
             function (err) {
               if (err) {
                 const errString = err.message

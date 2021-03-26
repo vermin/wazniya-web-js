@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -73,7 +74,7 @@ function HardenRuntime (options) {
   //
   if (isBrowserBuild != true) { // we used to disable eval for browser builds as well but now use it there when fallback to asmjs is needed
     window.eval = global.eval = function () {
-      throw new Error('MyMonero does not support window.eval() for security reasons.')
+      throw new Error('Wazniya does not support window.eval() for security reasons.')
     }
   }
 }

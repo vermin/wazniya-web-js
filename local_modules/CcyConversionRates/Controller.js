@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -59,34 +60,34 @@ class Controller extends EventEmitter {
     self.setMaxListeners(999) // avoid error
     //
     // Internal - Properties
-    self.xmrToCcyRateJSNumbersByCcySymbols = {} // [CurrencySymbol: Rate]
+    self.waznToCcyRateJSNumbersByCcySymbols = {} // [CurrencySymbol: Rate]
   }
 
   //
   // Interface - Accessors
   isRateReady ( // if you won't need the actual value
-    ccySymbol // fromXMRToCurrencySymbol
+    ccySymbol // fromWAZNToCurrencySymbol
   ) // -> Bool
   {
     const self = this
     //
-    if (ccySymbol == Currencies.ccySymbolsByCcy.XMR) {
+    if (ccySymbol == Currencies.ccySymbolsByCcy.WAZN) {
       throw "Invalid 'currency' argument value"
     }
-    const rateValue_orNil = self.xmrToCcyRateJSNumbersByCcySymbols[ccySymbol]
+    const rateValue_orNil = self.waznToCcyRateJSNumbersByCcySymbols[ccySymbol]
     return (rateValue_orNil != null && typeof rateValue_orNil !== 'undefined')
   }
 
-  rateFromXMR_orNullIfNotReady (
+  rateFromWAZN_orNullIfNotReady (
     ccySymbol // toCurrency
   ) // -> Rate?
   {
     const self = this
     //
-    if (ccySymbol == Currencies.ccySymbolsByCcy.XMR) {
+    if (ccySymbol == Currencies.ccySymbolsByCcy.WAZN) {
       throw "Invalid 'currency' argument value"
     }
-    const rateValue_orNil = self.xmrToCcyRateJSNumbersByCcySymbols[ccySymbol] // which may be nil if the rate is not ready yet
+    const rateValue_orNil = self.waznToCcyRateJSNumbersByCcySymbols[ccySymbol] // which may be nil if the rate is not ready yet
     if (rateValue_orNil == null || typeof rateValue_orNil === 'undefined') {
       return null // value=null|undefined -> null
     }
@@ -97,9 +98,9 @@ class Controller extends EventEmitter {
   //
   // Interface - Imperatives
   set (
-    rateAsNumber, // XMRToCurrencyRate; non-nil … ought to only need to be set to nil internally
+    rateAsNumber, // WAZNToCurrencyRate; non-nil … ought to only need to be set to nil internally
     ccySymbol, // forCurrency
-    isPartOfBatch // internally, aka doNotNotify; defaults to false; normally false … but pass true for batch calls and then call ifBatched_notifyOf_set_XMRToCurrencyRate manually (arg is called doNotNotify b/c if part of batch, you only want to do currency-non-specific notify post once instead of N times)
+    isPartOfBatch // internally, aka doNotNotify; defaults to false; normally false … but pass true for batch calls and then call ifBatched_notifyOf_set_WAZNToCurrencyRate manually (arg is called doNotNotify b/c if part of batch, you only want to do currency-non-specific notify post once instead of N times)
   ) // -> Bool // wasSetValueDifferent
   {
     const self = this
@@ -108,26 +109,26 @@ class Controller extends EventEmitter {
       throw 'unexpected nil rateAsNumber passed to CcyConversionRates.Controller.set()'
     }
     const doNotNotify = isPartOfBatch
-    const raw_previouslyExisting_rateValue = self.xmrToCcyRateJSNumbersByCcySymbols[ccySymbol]
+    const raw_previouslyExisting_rateValue = self.waznToCcyRateJSNumbersByCcySymbols[ccySymbol]
     const previouslyExistingRateValue_orNull = raw_previouslyExisting_rateValue != null && typeof raw_previouslyExisting_rateValue !== 'undefined' ? raw_previouslyExisting_rateValue : null
     //
-    self.xmrToCcyRateJSNumbersByCcySymbols[ccySymbol] = rateAsNumber
+    self.waznToCcyRateJSNumbersByCcySymbols[ccySymbol] = rateAsNumber
     //
     if (doNotNotify != true) {
-      self._notifyOf_updateTo_XMRToCurrencyRate() // the default
+      self._notifyOf_updateTo_WAZNToCurrencyRate() // the default
     }
     const wasSetValueDifferent = rateAsNumber != previouslyExistingRateValue_orNull // given rateAsNumber != nil
     return wasSetValueDifferent
   }
 
-  ifBatched_notifyOf_set_XMRToCurrencyRate () {
+  ifBatched_notifyOf_set_WAZNToCurrencyRate () {
     const self = this
     //
     // console.log(
     // 	"CcyConversionRates: Received updates:",
-    // 	JSON.stringify(self.xmrToCcyRateJSNumbersByCcySymbols, null, '  ')
+    // 	JSON.stringify(self.waznToCcyRateJSNumbersByCcySymbols, null, '  ')
     // )
-    self._notifyOf_updateTo_XMRToCurrencyRate()
+    self._notifyOf_updateTo_WAZNToCurrencyRate()
   }
 
   //
@@ -142,8 +143,8 @@ class Controller extends EventEmitter {
       const numberOf_ccySymbols = ccySymbols.length
       for (let i = 0; i < numberOf_ccySymbols; i++) {
         const ccySymbol = ccySymbols[i]
-        if (ccySymbol == Currencies.ccySymbolsByCcy.XMR) {
-          continue // do not need to mock XMR<->XMR rate
+        if (ccySymbol == Currencies.ccySymbolsByCcy.WAZN) {
+          continue // do not need to mock WAZN<->WAZN rate
         }
         const rateAsNumber = ratesBySymbol[ccySymbol]
         if (typeof rateAsNumber !== 'undefined') { // but this WILL allow nulls! is that ok? figure being able to nil serverside might be important... and if it is null from server, invalidating/expiring the local value is probably therefore a good idea
@@ -161,13 +162,13 @@ class Controller extends EventEmitter {
     const didUpdateAnyValues = mutable_didUpdateAnyValues
     if (didUpdateAnyValues) {
       // notify all of update
-      self.ifBatched_notifyOf_set_XMRToCurrencyRate()
+      self.ifBatched_notifyOf_set_WAZNToCurrencyRate()
     }
   }
 
   //
   // Internal - Imperatives
-  _notifyOf_updateTo_XMRToCurrencyRate () {
+  _notifyOf_updateTo_WAZNToCurrencyRate () {
     const self = this
     //
     self.emit(

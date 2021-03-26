@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -177,7 +178,7 @@ class WalletHostPollingController {
 
   //
   // Runtime - Imperatives - Private - Requests
-  _fetch_accountInfo () { // -> HostedMoneroAPIClient_RequestHandle
+  _fetch_accountInfo () { // -> HostedWaznAPIClient_RequestHandle
     const __debug_fnName = '_fetch_accountInfo'
     const self = this
     const wallet = self.wallet
@@ -216,7 +217,7 @@ class WalletHostPollingController {
       fn(err)
       return
     }
-    const requestHandle = self.context.hostedMoneroAPIClient.AddressInfo_returningRequestHandle(
+    const requestHandle = self.context.hostedWaznAPIClient.AddressInfo_returningRequestHandle(
       wallet.public_address,
       wallet.private_keys.view,
       wallet.public_keys.spend,
@@ -264,7 +265,7 @@ class WalletHostPollingController {
     self._didUpdate_factorOf_isFetchingState()
   }
 
-  _fetch_transactionHistory () { // fn: (err?) -> HostedMoneroAPIClient_RequestHandle
+  _fetch_transactionHistory () { // fn: (err?) -> HostedWaznAPIClient_RequestHandle
     const __debug_fnName = '_fetch_transactionHistory'
     const self = this
     const wallet = self.wallet
@@ -303,7 +304,7 @@ class WalletHostPollingController {
       fn(err)
       return
     }
-    const requestHandle = self.context.hostedMoneroAPIClient.AddressTransactions_returningRequestHandle(
+    const requestHandle = self.context.hostedWaznAPIClient.AddressTransactions_returningRequestHandle(
       wallet.public_address,
       wallet.private_keys.view,
       wallet.public_keys.spend,

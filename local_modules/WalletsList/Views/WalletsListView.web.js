@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -87,7 +88,7 @@ class WalletsListView extends ListView {
     {
       const emptyStateMessageContainerView = commonComponents_emptyScreens.New_EmptyStateMessageContainerView(
         '😃',
-        "Welcome to MyMonero!<br/>Let's get started.",
+        "Welcome to Wazniya!<br/>Let's get started.",
         self.context,
         0,
         0
@@ -215,10 +216,10 @@ class WalletsListView extends ListView {
       backgroundCSS += `background-size: ${logo_w}px ${logo_h}px;`
       backgroundCSS += 'background-position: 0 10px;'
       backgroundCSS += 'background-repeat: no-repeat;'
-      return `<a href="https://mymonero.com" target="_blank" style="text-decoration: none; color: rgb(252, 251, 252); "><span style='width: ${logo_w}px; height: ${logo_h}px; display: inline-block; margin-right: 6px;'><span style='width: 30px; height: 30px; display: inline-block; ${backgroundCSS}'>&nbsp;</span></span>MyMonero v1.1.19</a>`
+      return `<a href="https://wazniya.com" target="_blank" style="text-decoration: none; color: rgb(252, 251, 252); "><span style='width: ${logo_w}px; height: ${logo_h}px; display: inline-block; margin-right: 6px;'><span style='width: 30px; height: 30px; display: inline-block; ${backgroundCSS}'>&nbsp;</span></span>Wazniya v0.9.9</a>`
     }
     if (!self.listController.records || !self.listController.records.length) { // ok to access this w/o checking boot cause should be [] pre boot and view invisible to user preboot
-      return 'MyMonero'
+      return 'Wazniya'
     }
     return 'Wallets'
   }

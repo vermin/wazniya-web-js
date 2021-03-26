@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -30,7 +31,7 @@
 //
 const SendFundsView_Base = require('./SendFundsView_Base.web')
 const commonComponents_contactPicker = require('../../MMAppUICommonComponents/contactPicker.web')
-const monero_requestURI_utils = require('../../MoneroUtils/monero_requestURI_utils')
+const wazn_requestURI_utils = require('../../WaznUtils/wazn_requestURI_utils')
 const AddContactFromSendTabView = require('../../Contacts/Views/AddContactFromSendTabView.web')
 const StackAndModalNavigationView = require('../../StackNavigation/Views/StackAndModalNavigationView.web')
 //
@@ -47,7 +48,7 @@ class SendFundsView extends SendFundsView_Base {
     { // urlOpeningController
       const controller = self.context.urlOpeningCoordinator
       controller.on(
-        controller.EventName_TimeToHandleReceivedMoneroRequestURL(),
+        controller.EventName_TimeToHandleReceivedWaznRequestURL(),
         function (url) {
           self.navigationController.DismissModalViewsToView( // dismissing these b/c of checks in __shared_isAllowedToPerformDropOrURLOpeningOps
             null, // null -> to top stack view
@@ -108,7 +109,7 @@ class SendFundsView extends SendFundsView_Base {
     //
     let requestPayload
     try {
-      requestPayload = monero_requestURI_utils.New_ParsedPayload_FromPossibleRequestURIString(possibleUriString, self.context.nettype, self.context.monero_utils)
+      requestPayload = wazn_requestURI_utils.New_ParsedPayload_FromPossibleRequestURIString(possibleUriString, self.context.nettype, self.context.wazn_utils)
     } catch (errStr) {
       if (errStr) {
         self.validationMessageLayer.SetValidationError('Unable to decode that URL: ' + errStr)

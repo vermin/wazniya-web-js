@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -153,7 +154,7 @@ class FundsRequestsListView extends ListView {
   // Runtime - Accessors - Navigation
   //
   Navigation_Title () {
-    return 'Receive Monero'
+    return 'Receive WAZN'
   }
 
   Navigation_New_RightBarButtonView () {

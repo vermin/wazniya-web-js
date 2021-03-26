@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -42,7 +43,7 @@ class SendFundsView extends SendFundsView_Base {
     const self = this
     const layer = commonComponents_contactPicker_Lite.New_contactPickerLayer_Lite(
       self.context,
-      'Email, domain, or Monero address',
+      'Email, domain, or Wazn address',
       function (event) { // didFinishTypingInInput_fn
         self._didFinishTypingInContactPickerInput(event)
       }

@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -37,8 +38,8 @@ const commonComponents_tooltips = require('../../MMAppUICommonComponents/tooltip
 //
 const WalletsSelectView = require('../../WalletsList/Views/WalletsSelectView.web')
 //
-const monero_amount_format_utils = require('../../mymonero_libapp_js/mymonero-core-js/monero_utils/monero_amount_format_utils')
-const monero_sendingFunds_utils = require('../../mymonero_libapp_js/mymonero-core-js/monero_utils/monero_sendingFunds_utils')
+const wazn_amount_format_utils = require('../../wazniya_libapp_js/wazniya-core-js/wazn_utils/wazn_amount_format_utils')
+const wazn_sendingFunds_utils = require('../../wazniya_libapp_js/wazniya-core-js/wazn_utils/wazn_sendingFunds_utils')
 //
 class ImportTransactionsModalView extends View {
   constructor (options, context) {
@@ -58,7 +59,7 @@ class ImportTransactionsModalView extends View {
     const specificAPIAddressURLAuthority = self.context.settingsController.specificAPIAddressURLAuthority
     self.approximate_importOAAddress = specificAPIAddressURLAuthority != null && specificAPIAddressURLAuthority != '' && typeof specificAPIAddressURLAuthority !== 'undefined'
       ? `import.${specificAPIAddressURLAuthority}` // this is obvs 'approximate' and only meant to be used as an example…… if specificAPIAddressURLAuthority contains a port or a subdomain then this will appear to be obviously wrong but still server its purpose as an example to the power user who is entering a custom server address
-      : 'import.mymonero.com' // TODO: possibly get this from a shared config file
+      : 'import.wazniya.com' // TODO: possibly get this from a shared config file
     //
     self.setup_views()
     self.startObserving()
@@ -443,7 +444,7 @@ class ImportTransactionsModalView extends View {
     //
     const wallet = self.walletSelectView.CurrentlySelectedRowItem
     if (typeof wallet === 'undefined' || !wallet) {
-      _trampolineToReturnWithValidationErrorString('Please create a wallet to send Monero.')
+      _trampolineToReturnWithValidationErrorString('Please create a wallet to send WAZN.')
       return
     }
     wallet.SendFunds(
@@ -463,7 +464,7 @@ class ImportTransactionsModalView extends View {
       //
       self.amountInputLayer.value,
       false, // sweeping
-      monero_sendingFunds_utils.default_priority(),
+      wazn_sendingFunds_utils.default_priority(),
       //
       function (str) // preSuccess_nonTerminal_statusUpdate_fn
       {
@@ -518,7 +519,7 @@ class ImportTransactionsModalView extends View {
     }
     self.hasDoneRequest = true
     if (self.requestHandle_for_importRequestInfoAndStatus == null || typeof self.requestHandle_for_importRequestInfoAndStatus === 'undefined') {
-      const requestHandle = self.context.hostedMoneroAPIClient.ImportRequestInfoAndStatus(
+      const requestHandle = self.context.hostedWaznAPIClient.ImportRequestInfoAndStatus(
         self.wallet.public_address,
         self.wallet.private_keys.view,
         function (
@@ -535,11 +536,11 @@ class ImportTransactionsModalView extends View {
             self.informationalHeaderLayer.innerHTML = '&nbsp;' // clear for now
             return
           }
-          const raw_formattedMoney = monero_amount_format_utils.formatMoney(import_fee__JSBigInt)
+          const raw_formattedMoney = wazn_amount_format_utils.formatMoney(import_fee__JSBigInt)
           {
-            self.informationalHeaderLayer.innerHTML = `This requires a one-time import fee of ${raw_formattedMoney} XMR`
+            self.informationalHeaderLayer.innerHTML = `This requires a one-time import fee of ${raw_formattedMoney} WAZN`
             //
-            const tooltipText = `Importing your wallet means the server will scan the entire Monero blockchain for your wallet's past transactions, then stay up-to-date.<br/><br/>As this process places heavy load on the server, import is triggered by sending a fee (e.g. from the original wallet) with the specific payment ID below to the server at e.g. ${self.approximate_importOAAddress}.`
+            const tooltipText = `Importing your wallet means the server will scan the entire Wazn blockchain for your wallet's past transactions, then stay up-to-date.<br/><br/>As this process places heavy load on the server, import is triggered by sending a fee (e.g. from the original wallet) with the specific payment ID below to the server at e.g. ${self.approximate_importOAAddress}.`
             const view = commonComponents_tooltips.New_TooltipSpawningButtonView(tooltipText, self.context)
             const layer = view.layer
             self.informationalHeaderLayer.appendChild(layer) // we can append straight to layer as we don't ever change its innerHTML after this
@@ -565,8 +566,8 @@ class ImportTransactionsModalView extends View {
             self.amountInputLayer.value = amountStr
           }
           {
-            // const command = `transfer 3 import.mymonero.com ${import_fee__JSBigInt} ${payment_id}`
-            const tooltipText = 'For convenience you may send the fee from MyMonero here, or the official CLI or GUI tools, or any other Monero wallet.<br/><br/>Please be sure to use the exact payment ID below, so the server knows which wallet to import.'
+            // const command = `transfer 3 import.wazniya.com ${import_fee__JSBigInt} ${payment_id}`
+            const tooltipText = 'For convenience you may send the fee from Wazniya here, or the official CLI or GUI tools, or any other Wazn wallet.<br/><br/>Please be sure to use the exact payment ID below, so the server knows which wallet to import.'
             const view = commonComponents_tooltips.New_TooltipSpawningButtonView(tooltipText, self.context)
             const layer = view.layer
             self.walletSelectLabelLayer.appendChild(layer) // we can append straight to layer as we don't ever change its innerHTML after this

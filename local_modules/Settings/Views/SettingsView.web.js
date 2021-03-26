@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -39,7 +40,7 @@ const commonComponents_ccySelect = require('../../MMAppUICommonComponents/ccySel
 const commonComponents_hoverableCells = require('../../MMAppUICommonComponents/hoverableCells.web')
 const commonComponents_tooltips = require('../../MMAppUICommonComponents/tooltips.web')
 //
-const config__MyMonero = require('../../HostedMoneroAPIClient/config__MyMonero')
+const config__Wazniya = require('../../HostedWaznAPIClient/config__Wazniya')
 //
 class SettingsView extends View {
   constructor (options, context) {
@@ -123,7 +124,7 @@ class SettingsView extends View {
     const div = document.createElement('div')
     div.style.padding = '12px 0 12px 33px'
     const buttonView = commonComponents_tables.New_clickableLinkButtonView(
-      'ABOUT MYMONERO',
+      'ABOUT WAZNIYA',
       self.context,
       function () {
         const StackAndModalNavigationView = require('../../StackNavigation/Views/StackAndModalNavigationView.web')
@@ -326,7 +327,7 @@ class SettingsView extends View {
       div.appendChild(labelLayer)
       //
       const valueLayer = commonComponents_forms.New_fieldValue_textInputLayer(self.context, {
-        placeholderText: 'Leave blank to use mymonero.com'
+        placeholderText: 'Leave blank to use wazniya.com'
       })
       valueLayer.autocomplete = 'off'
       valueLayer.autocorrect = 'off'
@@ -514,7 +515,7 @@ class SettingsView extends View {
         }
         let msg
         if (self.context.isLiteApp != true) {
-          msg = 'Are you sure you want to delete all of your local data?\n\nAny wallets will remain permanently on the Monero blockchain but local data such as contacts will not be recoverable.'
+          msg = 'Are you sure you want to delete all of your local data?\n\nAny wallets will remain permanently on the Wazn blockchain but local data such as contacts will not be recoverable.'
         } else {
           msg = 'Are you sure you want to log out?'
         }
@@ -607,7 +608,7 @@ class SettingsView extends View {
     {
       if (mutable_value != '') {
         if (mutable_value.indexOf('.') == -1 && mutable_value.indexOf(':') == -1 && mutable_value.indexOf('localhost') == -1) {
-          preSubmission_validationError = `Please enter a valid URL authority, e.g. ${config__MyMonero.API__authority}.`
+          preSubmission_validationError = `Please enter a valid URL authority, e.g. ${config__Wazniya.API__authority}.`
         } else { // important else in the absence of reorganizing this code
           // strip http:// and https:// prefix here.. there's got to be a better way to do this..
           // ... probably not a good idea to naively strip "*://" prefix ... or is it?

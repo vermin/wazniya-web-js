@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -72,7 +73,7 @@ class UseExisting_MetaInfo_View extends BaseView_Wallet_MetaInfo {
       const labelLayer = commonComponents_forms.New_fieldTitle_labelLayer('SECRET MNEMONIC', self.context)
       div.appendChild(labelLayer)
       {
-        const tooltipText = 'This secret mnemonic is never<br/>sent to the MyMonero server.'
+        const tooltipText = 'This secret mnemonic is never<br/>sent to the Wazniya server.'
         const view = commonComponents_tooltips.New_TooltipSpawningButtonView(tooltipText, self.context)
         const layer = view.layer
         labelLayer.appendChild(layer)
@@ -179,7 +180,7 @@ class UseExisting_MetaInfo_View extends BaseView_Wallet_MetaInfo {
         const labelLayer = commonComponents_forms.New_fieldTitle_labelLayer('VIEW KEY', self.context)
         div.appendChild(labelLayer)
         {
-          const tooltipText = 'This private view key and the wallet<br/>address are the only things sent<br/>to the MyMonero server.'
+          const tooltipText = 'This private view key and the wallet<br/>address are the only things sent<br/>to the Wazniya server.'
           const view = commonComponents_tooltips.New_TooltipSpawningButtonView(tooltipText, self.context)
           const layer = view.layer
           labelLayer.appendChild(layer)
@@ -229,7 +230,7 @@ class UseExisting_MetaInfo_View extends BaseView_Wallet_MetaInfo {
         const labelLayer = commonComponents_forms.New_fieldTitle_labelLayer('SPEND KEY', self.context)
         div.appendChild(labelLayer)
         {
-          const tooltipText = 'This private spend key is never<br/>sent to the MyMonero server.'
+          const tooltipText = 'This private spend key is never<br/>sent to the Wazniya server.'
           const view = commonComponents_tooltips.New_TooltipSpawningButtonView(tooltipText, self.context)
           const layer = view.layer
           labelLayer.appendChild(layer)

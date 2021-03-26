@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -39,8 +40,8 @@ const k_defaults_record =
 {
   specificAPIAddressURLAuthority: '',
   appTimeoutAfterS: 3 * 60, // 3 mins
-  invisible_hasAgreedToTermsOfCalculatedEffectiveMoneroAmount: false,
-  displayCcySymbol: Currencies.ccySymbolsByCcy.XMR, // default
+  invisible_hasAgreedToTermsOfCalculatedEffectiveWaznAmount: false,
+  displayCcySymbol: Currencies.ccySymbolsByCcy.WAZN, // default
   authentication_requireWhenSending: true,
   authentication_requireWhenDisclosingWalletSecrets: true,
   autoDownloadUpdatesEnabled: true
@@ -103,7 +104,7 @@ class SettingsController extends EventEmitter {
       //
       self.specificAPIAddressURLAuthority = record_doc.specificAPIAddressURLAuthority
       self.appTimeoutAfterS = record_doc.appTimeoutAfterS
-      self.invisible_hasAgreedToTermsOfCalculatedEffectiveMoneroAmount = record_doc.invisible_hasAgreedToTermsOfCalculatedEffectiveMoneroAmount
+      self.invisible_hasAgreedToTermsOfCalculatedEffectiveWaznAmount = record_doc.invisible_hasAgreedToTermsOfCalculatedEffectiveWaznAmount
       self.displayCcySymbol = record_doc.displayCcySymbol
       if (typeof record_doc.authentication_requireWhenSending === 'undefined' || record_doc.authentication_requireWhenSending == null) {
         self.authentication_requireWhenSending = k_defaults_record.authentication_requireWhenSending
@@ -212,7 +213,7 @@ class SettingsController extends EventEmitter {
             } else if (valueKey == 'autoDownloadUpdatesEnabled') {
               didUpdate_autoDownloadUpdatesEnabled = true
             }
-            // NOTE: not checking invisible_hasAgreedToTermsOfCalculatedEffectiveMoneroAmount b/c invisible_ and therefore always set programmatically
+            // NOTE: not checking invisible_hasAgreedToTermsOfCalculatedEffectiveWaznAmount b/c invisible_ and therefore always set programmatically
           }
           { // set
             self[valueKey] = value
@@ -293,7 +294,7 @@ class SettingsController extends EventEmitter {
 				  _id: self._id, // important to set for updates
 				  specificAPIAddressURLAuthority: self.specificAPIAddressURLAuthority,
 				  appTimeoutAfterS: self.appTimeoutAfterS,
-				  invisible_hasAgreedToTermsOfCalculatedEffectiveMoneroAmount: self.invisible_hasAgreedToTermsOfCalculatedEffectiveMoneroAmount,
+				  invisible_hasAgreedToTermsOfCalculatedEffectiveWaznAmount: self.invisible_hasAgreedToTermsOfCalculatedEffectiveWaznAmount,
 				  displayCcySymbol: self.displayCcySymbol,
 				  authentication_requireWhenSending: self.authentication_requireWhenSending,
 				  authentication_requireWhenDisclosingWalletSecrets: self.authentication_requireWhenDisclosingWalletSecrets,

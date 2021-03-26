@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -85,15 +86,15 @@ function NewHydratedContext (initialContext) {
 	    }
 	  },
 	  {
-	    module: require('../../HostedMoneroAPIClient/BackgroundResponseParser.web'),
+	    module: require('../../HostedWaznAPIClient/BackgroundResponseParser.web'),
 	    instance_key: 'backgroundAPIResponseParser',
 	    options: {
-	      coreBridge_instance: initialContext.monero_utils // the same as coreBridge_instance
+	      coreBridge_instance: initialContext.wazn_utils // the same as coreBridge_instance
 	    }
 	  },
 	  {
-	    module: require('../../HostedMoneroAPIClient/HostedMoneroAPIClient.Lite'),
-	    instance_key: 'hostedMoneroAPIClient',
+	    module: require('../../HostedWaznAPIClient/HostedWaznAPIClient.Lite'),
+	    instance_key: 'hostedWaznAPIClient',
 	    options: {
 	      appUserAgent_product: app.getName(),
 	      appUserAgent_version: app.getVersion(),

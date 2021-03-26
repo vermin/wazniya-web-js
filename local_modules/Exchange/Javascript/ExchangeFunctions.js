@@ -1,7 +1,7 @@
 import axios from 'axios'
 // const http = require('http');
 // const { URL } = require('url');
-// This module contains XMR.TO functionality. For more info, go to test.xmr.to
+// This module contains WAZN.TO functionality. For more info, go to test.wazn.to
 
 class ExchangeFunctions {
 
@@ -15,7 +15,7 @@ class ExchangeFunctions {
   //     const order = this.order;
   //     const self = this;
   //     return new Promise((resolve, reject) => {
-  //         let endpoint = `https://test.xmr.to/api/v3/xmr2btc/order_status_query/`;
+  //         let endpoint = `https://test.wazn.to/api/v3/wazn2btc/order_status_query/`;
   //         let data = {
   //             "uuid": order.data.uuid
   //         }
@@ -42,8 +42,8 @@ class ExchangeFunctions {
   // static createNewOrder(amount, amount_currency, btc_dest_address) {
   //     let self = this;
   //     return new Promise((resolve, reject) => {
-  //         let endpoint = `https://test.xmr.to/api/v3/xmr2btc/order_create/`;
-  //         // https://xmr.to/api/v3/xmr2btc/order_parameter_query/
+  //         let endpoint = `https://test.wazn.to/api/v3/wazn2btc/order_create/`;
+  //         // https://wazn.to/api/v3/wazn2btc/order_parameter_query/
   //             let data = {
   //                 amount,  // float
   //                 amount_currency, // currency as string
@@ -65,7 +65,7 @@ class ExchangeFunctions {
   //                 reject(error);
   //               });
 
-  //             // post data to test.xmr.to
+  //             // post data to test.wazn.to
   //             // let result = setTimeout(() => {
   //             //     resolve({
   //             //         "state": "TO_BE_CREATED",
@@ -85,8 +85,8 @@ class ExchangeFunctions {
   // static updateOrder() {
   //     let self = this;
   //     return new Promise((resolve, reject) => {
-  //     let endpoint = `https://test.xmr.to/api/v3/xmr2btc/order_create/`;
-  //     // https://xmr.to/api/v3/xmr2btc/order_parameter_query/
+  //     let endpoint = `https://test.wazn.to/api/v3/wazn2btc/order_create/`;
+  //     // https://wazn.to/api/v3/wazn2btc/order_parameter_query/
   //         let data = {
   //             amount,  // float
   //             amount_currency, // currency as string
@@ -115,10 +115,10 @@ class ExchangeFunctions {
   // static generateRatesTable(rates) {
   //     return new Promise((resolve, reject) => {
   //         let tbl = document.createElement('table');
-  //         // row 0 is XMR => BTC
+  //         // row 0 is WAZN => BTC
   //         let newRow = tbl.insertRow(0);
   //         let newCell = newRow.insertCell(0);
-  //         let newText = document.createTextNode(`1 XMR buys you `);
+  //         let newText = document.createTextNode(`1 WAZN buys you `);
   //         newCell.appendChild(newText);
   //         newCell = newRow.insertCell(1);
   //         newText = document.createTextNode(`${rates.data.price} BTC`);

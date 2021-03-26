@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -29,12 +30,12 @@
 'use strict'
 //
 const View = require('../../Views/View.web')
-const JSBigInt = require('../../mymonero_libapp_js/mymonero-core-js/cryptonote_utils/biginteger').BigInteger
+const JSBigInt = require('../../wazniya_libapp_js/wazniya-core-js/cryptonote_utils/biginteger').BigInteger
 const commonComponents_walletIcons = require('../../MMAppUICommonComponents/walletIcons.web')
 const commonComponents_hoverableCells = require('../../MMAppUICommonComponents/hoverableCells.web')
 //
 const Currencies = require('../../CcyConversionRates/Currencies')
-const monero_amount_format_utils = require('../../mymonero_libapp_js/mymonero-core-js/monero_utils/monero_amount_format_utils')
+const wazn_amount_format_utils = require('../../wazniya_libapp_js/wazniya-core-js/wazn_utils/wazn_amount_format_utils')
 //
 class WalletCellContentsView extends View {
   constructor (options, context) {

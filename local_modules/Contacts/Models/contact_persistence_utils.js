@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -45,7 +46,7 @@ function HydrateInstance (
   self.address = plaintextDocument.address
   self.payment_id = plaintextDocument.payment_id
   self.emoji = plaintextDocument.emoji
-  self.cached_OAResolved_XMR_address = plaintextDocument.cached_OAResolved_XMR_address
+  self.cached_OAResolved_WAZN_address = plaintextDocument.cached_OAResolved_WAZN_address
 }
 exports.HydrateInstance = HydrateInstance
 //
@@ -73,7 +74,7 @@ function SaveToDisk (
 	  address: self.address,
 	  payment_id: self.payment_id,
 	  emoji: self.emoji,
-	  cached_OAResolved_XMR_address: self.cached_OAResolved_XMR_address
+	  cached_OAResolved_WAZN_address: self.cached_OAResolved_WAZN_address
 	}
   persistable_object_utils.write(
     self.context.string_cryptor__background,

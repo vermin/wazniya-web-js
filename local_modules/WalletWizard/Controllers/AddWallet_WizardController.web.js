@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -28,7 +29,7 @@
 //
 'use strict'
 //
-const mnemonic_languages = require('../../mymonero_libapp_js/mymonero-core-js/cryptonote_utils/mnemonic_languages')
+const mnemonic_languages = require('../../wazniya_libapp_js/wazniya-core-js/cryptonote_utils/mnemonic_languages')
 //
 const WizardTask_Modes =
 {

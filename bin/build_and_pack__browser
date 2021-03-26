@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 bin/_build_browser_prod; 
-# node_modules/babel-minify/bin/minify.js browser_build/mymonero-app-bundle.js -o browser_build/mymonero-app-bundle.js
+# node_modules/babel-minify/bin/minify.js browser_build/wazniya-app-bundle.js -o browser_build/wazniya-app-bundle.js

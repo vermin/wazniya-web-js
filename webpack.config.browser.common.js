@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -38,7 +39,7 @@ module.exports =
   entry: './local_modules/MainWindow/Views/index.browser.js',
   output: {
     path: path.resolve(__dirname, 'browser_build'),
-    filename: 'mymonero-app-bundle.js'
+    filename: 'wazniya-app-bundle.js'
   },
   cache: false,
   resolve: {
@@ -84,16 +85,16 @@ module.exports =
         exclude: {
           test: [
             path.join(__dirname, 'node_modules'),
-            /MyMoneroCoreCpp_ASMJS\.asm\.js/,
-            /MyMoneroCoreCpp_ASMJS\.wasm/,
-            /MyMoneroCoreCpp_WASM\.js/,
-            /MyMoneroCoreCpp_WASM\.wasm/,
-            /MyMoneroCoreBridge\.js/,
-            /MyMoneroCoreBridgeClass\.js/
+            /WazniyaCoreCpp_ASMJS\.asm\.js/,
+            /WazniyaCoreCpp_ASMJS\.wasm/,
+            /WazniyaCoreCpp_WASM\.js/,
+            /WazniyaCoreCpp_WASM\.wasm/,
+            /WazniyaCoreBridge\.js/,
+            /WazniyaCoreBridgeClass\.js/
           ],
           exclude: [
-            path.resolve(__dirname, 'mymonero-core-js/tests'),
-            path.resolve(__dirname, 'mymonero_libapp_js/tests')
+            path.resolve(__dirname, 'wazniya-core-js/tests'),
+            path.resolve(__dirname, 'wazniya_libapp_js/tests')
           ]
         },
         use: [

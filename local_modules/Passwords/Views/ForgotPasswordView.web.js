@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -139,7 +140,7 @@ class ForgotPasswordView extends View {
       null, // no image
       true,
       function (layer, e) {
-        const msg = 'Are you sure you want to clear your locally stored data?\n\nAny wallets will remain permanently on the Monero blockchain. At present, local-only data like contacts would not be recoverable.'
+        const msg = 'Are you sure you want to clear your locally stored data?\n\nAny wallets will remain permanently on the Wazn blockchain. At present, local-only data like contacts would not be recoverable.'
         self.context.windowDialogs.PresentQuestionAlertDialogWith(
           'Delete everything?',
           msg,

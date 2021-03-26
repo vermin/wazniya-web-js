@@ -1213,7 +1213,7 @@ div.exchange-button {
 
 /** END FROM WalletSelectView.web.js */
 
-#exchange-xmr {
+#exchange-wazn {
     position: absolute;
     bottom: 25px;
     right: 12px;
@@ -1239,7 +1239,7 @@ div.exchange-button {
     font-size: 12px;
 }
 
-input#XMRcurrencyInput {
+input#WAZNcurrencyInput {
     min-width: 104px;
 }
 input#BTCcurrencyInput {
@@ -1256,7 +1256,7 @@ div#currency-table {
 #tx-fee {
     padding: 0px 13px 7px 6px;
 }
-#monerod-updates {
+#waznd-updates {
     display: none;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     display: block;
@@ -1285,7 +1285,7 @@ div#currency-table {
     left: 0;
 }
 
-#currencyInput { 
+#currencyInput {
     display: inline-block;
     height: 29px;
     width: 80px;
@@ -1326,7 +1326,7 @@ div#currency-table {
     position: relative;
     left: 0px;
     top: 0px;
-    box-shadow: rgb(22, 20, 22) 0px 0.5px 1px 0px, rgb(73, 71, 73) 0px 0.5px 0px 0px inset;    
+    box-shadow: rgb(22, 20, 22) 0px 0.5px 1px 0px, rgb(73, 71, 73) 0px 0.5px 0px 0px inset;
 }
 .selectionDisplayCellView .walletIcon {
     position: absolute; left: 16px; top: 16px; background-image: url('../../../assets/img/wallet-6B696B@3x.png');
@@ -1367,7 +1367,7 @@ div#currency-table {
 }
 .walletIcon {
     position: absolute;
-    left: 16px; top: 16px; 
+    left: 16px; top: 16px;
 }
 .description-label {
     position: relative;
@@ -1382,12 +1382,12 @@ div#currency-table {
     word-break: normal;
     overflow: hidden;
     text-overflow: ellipsis;
-    cursor: default;    
+    cursor: default;
 }
 #exchangePage table {
     width: 100%;
 }
-.textInput { 
+.textInput {
     display: inline-block;
     height: 29px;
     width: 80px;
@@ -1457,7 +1457,7 @@ div#currency-table {
     display: none;
 }
 .exchange-button {
-    
+
 }
 #exchangePage .form_field {
     padding: 0px 24px 20px 0px;
@@ -1498,13 +1498,13 @@ div#currency-table {
     width: 100%;
     /* width: 80px;*/
 }
-.xmrto-order-status {
+.waznto-order-status {
     margin-top: 6px;
     text-align: left;
 }
 #timerSeparator {
     font-size: 3em;
-}        
+}
 .uppercase {
     text-transform: uppercase;
 }
@@ -1523,7 +1523,7 @@ div#currency-table {
 #wallet-selector {
     position: relative;
 }
-#exchangePage #state {                    
+#exchangePage #state {
     display: block;
     text-align: left;
     margin-left: 0px;
@@ -1562,7 +1562,7 @@ div#currency-table {
     left: 0px;
     z-index: 10;
     max-height: 174.9px;
-    height: 132px;    
+    height: 132px;
 }
 #wallet-options.active {
     display: block !important;
@@ -1573,7 +1573,7 @@ div#currency-table {
 .options_containerView.active {
     background: rgb(39, 37, 39);
 }
-#exchange-xmr {
+#exchange-wazn {
     z-index: 50;
 }
 #orderStatusPage {
@@ -1588,10 +1588,10 @@ div#currency-table {
 #orderStatusPage.active {
     display: block;
 }
-#exchange-xmr {
+#exchange-wazn {
     display: none;
 }
-#exchange-xmr.active {
+#exchange-wazn.active {
     display: block;
 }
 .empty-page-panel .exchangeScreen .textInput {
@@ -1656,17 +1656,17 @@ div#currency-table {
 
 
 .description-label {
-    position: relative;    
+    position: relative;
     box-sizing: border-box;
-    padding: 0px 38px 4px 66px; 
-    font-size: 13px; 
-    font-family: Native-Light, input, menlo, monospace; 
-    font-weight: 100; 
-    -webkit-font-smoothing: subpixel-antialiased; 
-    max-height: 32px; color: rgb(158, 156, 158); 
-    word-break: normal; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
+    padding: 0px 38px 4px 66px;
+    font-size: 13px;
+    font-family: Native-Light, input, menlo, monospace;
+    font-weight: 100;
+    -webkit-font-smoothing: subpixel-antialiased;
+    max-height: 32px; color: rgb(158, 156, 158);
+    word-break: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
     cursor: default;
 }
 
@@ -1706,29 +1706,29 @@ div#currency-table {
 }
 
 .label-spacer {
-    border-radius: 3px; 
-    background-color: rgb(56, 54, 56); 
-    padding: 8px 11px; 
-    box-sizing: border-box; width: 100%; height: auto; color: rgb(124, 122, 124); font-size: 13px; font-weight: 100; font-family: Native-Light, input, menlo, monospace; -webkit-font-smoothing: subpixel-antialiased; 
+    border-radius: 3px;
+    background-color: rgb(56, 54, 56);
+    padding: 8px 11px;
+    box-sizing: border-box; width: 100%; height: auto; color: rgb(124, 122, 124); font-size: 13px; font-weight: 100; font-family: Native-Light, input, menlo, monospace; -webkit-font-smoothing: subpixel-antialiased;
     word-break: break-all;
 }
 
-#localmonero a, #indacoin a {
+#localwazn a, #indacoin a {
     margin: 8px 0px 0px 0px !important;
 }
 
-#localmonero-anchor, #indacoin-anchor {
+#localwazn-anchor, #indacoin-anchor {
     text-decoration: none;
     text-transform: uppercase;
 }
 
-#indacoin, #localmonero {
+#indacoin, #localwazn {
     display: none;
 }
 
 .clickableLinkButton {
-    color: rgb(17, 187, 236); 
-    cursor: pointer; 
+    color: rgb(17, 187, 236);
+    cursor: pointer;
     user-select: none;
     font-family: Native-Light, input, menlo, monospace;
     -webkit-font-smoothing: subpixel-antialiased;
@@ -1821,7 +1821,7 @@ div#currency-table {
     right: 5px;
     left: auto;
 }
-input#XMRcurrencyInput, input#BTCcurrencyInput {
+input#WAZNcurrencyInput, input#BTCcurrencyInput {
     width: calc(100% - 70px);
     padding: 0px 0px;
     text-indent: 148px;
@@ -1844,7 +1844,7 @@ input#XMRcurrencyInput, input#BTCcurrencyInput {
     margin-right: 0px;
     text-indent: 20px;
     height: 24px;
-    top: 0px;    
+    top: 0px;
         /* width: calc(100% - 72px); */
     /* max-width: calc(100% - 72px); */
     padding: 0px 0px;
@@ -1886,4 +1886,3 @@ input#XMRcurrencyInput, input#BTCcurrencyInput {
 .label-spacing {
     padding: 0px 0px 0px 0px !important;
 }
-

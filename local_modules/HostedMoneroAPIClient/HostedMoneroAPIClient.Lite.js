@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -28,13 +29,13 @@
 
 'use strict'
 //
-const HostedMoneroAPIClient_Base = require('./HostedMoneroAPIClient_Base')
+const HostedWaznAPIClient_Base = require('./HostedWaznAPIClient_Base')
 //
-class HostedMoneroAPIClient extends HostedMoneroAPIClient_Base {
+class HostedWaznAPIClient extends HostedWaznAPIClient_Base {
   //
   // Lifecycle - Init
   constructor (options, context) {
     super(options, context)
   }
 }
-module.exports = HostedMoneroAPIClient
+module.exports = HostedWaznAPIClient

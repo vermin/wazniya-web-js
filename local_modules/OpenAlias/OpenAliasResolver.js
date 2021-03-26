@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -30,7 +31,7 @@
 //
 const EventEmitter = require('events')
 //
-const monero_openalias_utils = require('./monero_openalias_utils')
+const wazn_openalias_utils = require('./wazn_openalias_utils')
 //
 class OpenAliasResolver extends EventEmitter {
   //
@@ -61,10 +62,10 @@ class OpenAliasResolver extends EventEmitter {
   //
   // Runtime - Accessors - Transforms
   //
-  DoesStringContainPeriodChar_excludingAsXMRAddress_qualifyingAsPossibleOAAddress (address) {
+  DoesStringContainPeriodChar_excludingAsWAZNAddress_qualifyingAsPossibleOAAddress (address) {
     const self = this
     //
-    return monero_openalias_utils.DoesStringContainPeriodChar_excludingAsXMRAddress_qualifyingAsPossibleOAAddress(address)
+    return wazn_openalias_utils.DoesStringContainPeriodChar_excludingAsWAZNAddress_qualifyingAsPossibleOAAddress(address)
   }
 
   //
@@ -73,14 +74,14 @@ class OpenAliasResolver extends EventEmitter {
   //
   ResolveOpenAliasAddress (openAliasAddress, fn) { // -> DNSResolverHandle
     const self = this
-    const resolverHandle = monero_openalias_utils.ResolvedMoneroAddressInfoFromOpenAliasAddress(
+    const resolverHandle = wazn_openalias_utils.ResolvedWaznAddressInfoFromOpenAliasAddress(
       openAliasAddress,
       self.txtRecordResolver,
       self.context.nettype,
-      self.context.monero_utils,
+      self.context.wazn_utils,
       function (
         err,
-        moneroReady_address,
+        waznReady_address,
         payment_id, // may be undefined
         tx_description,
         openAlias_domain,
@@ -102,7 +103,7 @@ class OpenAliasResolver extends EventEmitter {
               //
               openAliasAddress,
               //
-              moneroReady_address,
+              waznReady_address,
               payment_id, // may be undefined
               tx_description, // may be undefined
               //
@@ -118,7 +119,7 @@ class OpenAliasResolver extends EventEmitter {
             null,
             openAliasAddress, // for consumer reference
             //
-            moneroReady_address,
+            waznReady_address,
             payment_id, // may be undefined
             tx_description, // may be undefined
             //

@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -346,9 +347,9 @@ class FundsRequestDetailsView extends View {
   new_requesteeMessagePlaintextString () {
     const self = this
     let value = '' // must use \r\n instead of \n for Windows
-    const ccy = self.fundsRequest.amountCcySymbol || 'XMR'
+    const ccy = self.fundsRequest.amountCcySymbol || 'WAZN'
     {
-      value += 'Someone has requested a Monero payment'
+      value += 'Someone has requested a Wazn payment'
       if (self.fundsRequest.amount) {
         value += ` of ${self.fundsRequest.amount} ${ccy}`
       }
@@ -364,9 +365,9 @@ class FundsRequestDetailsView extends View {
     }
     value += '\r\n' // spacer
     value += '\r\n---------------------------'
-    value += `\r\nIf you have MyMonero installed, use this link to send the funds: ${self.fundsRequest.Lazy_URI__addressAsAuthority()}`
+    value += `\r\nIf you have Wazniya installed, use this link to send the funds: ${self.fundsRequest.Lazy_URI__addressAsAuthority()}`
     value += '\r\n'
-    value += `\r\nIf you don't have MyMonero installed, download it from ${'https://' + self.context.appDownloadLink_domainAndPath}`
+    value += `\r\nIf you don't have Wazniya installed, download it from ${'https://' + self.context.appDownloadLink_domainAndPath}`
     //
     return value
   }
@@ -375,10 +376,10 @@ class FundsRequestDetailsView extends View {
     const self = this
     let value = ''
     //
-    const ccy = self.fundsRequest.amountCcySymbol || 'XMR'
+    const ccy = self.fundsRequest.amountCcySymbol || 'WAZN'
     value += '<p>'
     {
-      value += 'Someone has requested a Monero payment'
+      value += 'Someone has requested a Wazn payment'
       if (self.fundsRequest.amount) {
         value += ` of <strong>${self.fundsRequest.amount} ${ccy}</strong>`
       }
@@ -392,9 +393,9 @@ class FundsRequestDetailsView extends View {
       value += `<p>Description: "${self.fundsRequest.description}"</p>`
     }
     value += '<p>---------------------------</p>'
-    value += `<p>If you have MyMonero installed, <a href="${self.fundsRequest.Lazy_URI__addressAsAuthority()}">press this link to send the funds</a>.</p>`
+    value += `<p>If you have Wazniya installed, <a href="${self.fundsRequest.Lazy_URI__addressAsAuthority()}">press this link to send the funds</a>.</p>`
     const appDownloadLink_domainAndPath = self.context.appDownloadLink_domainAndPath
-    value += `<p>If you don't have MyMonero installed, download it from <a href="https://${appDownloadLink_domainAndPath}">${appDownloadLink_domainAndPath}</a>.</p>`
+    value += `<p>If you don't have Wazniya installed, download it from <a href="https://${appDownloadLink_domainAndPath}">${appDownloadLink_domainAndPath}</a>.</p>`
     //
     return value
   }
@@ -404,7 +405,7 @@ class FundsRequestDetailsView extends View {
   // Runtime - Accessors - Navigation
   //
   Navigation_Title () {
-    return 'Monero Request'
+    return 'Wazn Request'
   }
 
   //
@@ -439,8 +440,8 @@ class FundsRequestDetailsView extends View {
     }
     self.context.filesystemUI.PresentDialogToSaveBase64ImageStringAsImageFile(
       self.fundsRequest.qrCode_imgDataURIString,
-      'Save Monero Request',
-      'Monero request',
+      'Save Wazn Request',
+      'Wazn request',
       function (err) {
         if (err) {
           const errString = err.message

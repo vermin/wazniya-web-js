@@ -547,7 +547,7 @@
 				return slice;
 			} catch (e) { // Fails in IE < 9
 
-				// This will work for genuine arrays, array-like objects, 
+				// This will work for genuine arrays, array-like objects,
 				// NamedNodeMap (attributes, entities, notations),
 				// NodeList (e.g., getElementsByTagName), HTMLCollection (e.g., childNodes),
 				// and will not fail on other DOM objects (as do DOM elements in IE < 9)
@@ -2616,7 +2616,7 @@
 
 			/* Velocity's behavior is categorized into "actions": Elements can either be specially scrolled into view,
 			 or they can be started, stopped, paused, resumed, or reversed . If a literal or referenced properties map is passed in as Velocity's
-			 first argument, the associated action is "start". Alternatively, "scroll", "reverse", "pause", "resume" or "stop" can be passed in 
+			 first argument, the associated action is "start". Alternatively, "scroll", "reverse", "pause", "resume" or "stop" can be passed in
 			 instead of a properties map. */
 			var action;
 
@@ -2642,7 +2642,7 @@
 						pauseDelayOnElement(element, currentTime);
 					});
 
-					/* Pause and Resume are call-wide (not on a per element basis). Thus, calling pause or resume on a 
+					/* Pause and Resume are call-wide (not on a per element basis). Thus, calling pause or resume on a
 					 single element will cause any calls that containt tweens for that element to be paused/resumed
 					 as well. */
 
@@ -2699,7 +2699,7 @@
 						resumeDelayOnElement(element, currentTime);
 					});
 
-					/* Pause and Resume are call-wide (not on a per elemnt basis). Thus, calling pause or resume on a 
+					/* Pause and Resume are call-wide (not on a per elemnt basis). Thus, calling pause or resume on a
 					 single element will cause any calls that containt tweens for that element to be paused/resumed
 					 as well. */
 
@@ -3183,7 +3183,7 @@
 
 
 							//
-							// BEGIN MyMonero MODIFICATION
+							// BEGIN Wazniya MODIFICATION
 
 
 								 // NOTE: Commented this
@@ -3193,12 +3193,12 @@
 								// scrollPositionEnd = (scrollPositionCurrent + $(element).position()[scrollDirection.toLowerCase()]) + scrollOffset; /* GET */
 
 
-							/* using offsets to calculate the element's position values relative to the container's currently viewable area (without taking into account the 
-							   container's true dimensions -- say, for example, if the container was not overflowing). Thus, the scroll end value is the sum of the 
+							/* using offsets to calculate the element's position values relative to the container's currently viewable area (without taking into account the
+							   container's true dimensions -- say, for example, if the container was not overflowing). Thus, the scroll end value is the sum of the
 							   child element's position *and* the scroll container's current scroll position. */
 							scrollPositionEnd = (scrollPositionCurrent + $(element).offset()[scrollDirection.toLowerCase()] - $(opts.container).offset()[scrollDirection.toLowerCase()]) + scrollOffset; /* GET */
 
-							// END MyMonero MODIFICATION
+							// END Wazniya MODIFICATION
 							//
 
 

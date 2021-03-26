@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -30,8 +31,8 @@
 //
 const EventEmitter = require('events')
 //
-const PROTOCOL_PREFIX = 'monero' // this is also specified for MacOS in packager.js under scheme
-// maybe support "mymonero" too
+const PROTOCOL_PREFIX = 'wazn' // this is also specified for MacOS in packager.js under scheme
+// maybe support "wazniya" too
 //
 class URLOpeningController_Abstract extends EventEmitter {
   //

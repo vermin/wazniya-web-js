@@ -1,3 +1,4 @@
+// Copyright (c) 2020-2020 Wazniya
 // Copyright (c) 2014-2019, MyMonero.com
 //
 // All rights reserved.
@@ -140,8 +141,8 @@ class ContactQRDisplayModalView extends View {
           }
           self.context.filesystemUI.PresentDialogToSaveBase64ImageStringAsImageFile(
             imgDataURIString,
-            'Save Monero Request',
-            'Monero request',
+            'Save Wazn Request',
+            'Wazn request',
             function (err) {
               if (err) {
                 const errString = err.message
